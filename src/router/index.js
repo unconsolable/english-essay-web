@@ -4,6 +4,8 @@ import Login from '@/components/Login.vue'
 import SignUp from '@/components/SignUp.vue'
 import AppIndex from '@/components/AppIndex.vue'
 import Home from '@/components/Home.vue'
+import Essay from '@/components/Essay.vue'
+import Class from '@/components/Class.vue'
 
 Vue.use(Router)
 
@@ -33,6 +35,22 @@ const router = new Router({
           path: '/index',
           name: 'AppIndex',
           component: AppIndex,
+          meta: {
+            requireAuth: true
+          }
+        },
+        {
+          path: '/essay',
+          name: 'Essay',
+          component: Essay,
+          meta: {
+            requireAuth: true
+          }
+        },
+        {
+          path: '/class',
+          name: 'Class',
+          component: Class,
           meta: {
             requireAuth: true
           }

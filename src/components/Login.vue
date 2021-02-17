@@ -33,23 +33,35 @@ export default {
   },
   methods: {
     async onLoginClicked () {
-      var _this = this
-      this.$axios
-        .post('/auth', {
+      let _this = this
+      try {
+        let successResponse = await this.$axios.post('/auth', {
           username: this.username,
           password: this.password
         })
-        .then(successResponse => {
-          if (successResponse.data.code === 200) {
-            _this.$store.commit('token', successResponse.data.result)
-            _this.$router.replace({path: '/index'})
-          } else {
-            alert('账号或密码错误')
+        if (successResponse.data.code === 200) {
+          _this.$store.commit('token', successResponse.data.result)
+        } else {
+          alert('账号或密码错误')
+        }
+      } catch (e) {
+        alert('认证: 未知错误')
+      }
+      try {
+        let successResponse = await this.$axios.get('user/basicInfo', {
+          headers: {
+            'x-api-token': this.$store.state.token
           }
         })
-        .catch(failResponse => {
-          alert('未知错误')
-        })
+        if (successResponse.data.code === 200) {
+          _this.$store.commit('user', successResponse.data.result)
+        } else {
+          alert(successResponse.data.reason)
+        }
+      } catch (e) {
+        alert('请求用户信息: 未知错误')
+      }
+      _this.$router.replace({path: '/index'})
     },
     async onSignUpClicked () {
       this.$router.replace({path: '/signup'})
