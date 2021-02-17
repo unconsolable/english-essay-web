@@ -17,19 +17,42 @@
         </el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" plain>登录</el-button>
-        <el-button type="primary" plain>注册</el-button>
+        <el-button type="primary" @click="onLoginClicked" plain>登录</el-button>
+        <el-button type="primary" @click="onSignUpClicked" plain>注册</el-button>
       </el-form-item>
   </el-form>
 </template>
 
 <script>
 export default {
-  el: '#loginCard',
   data () {
     return {
       username: '',
       password: ''
+    }
+  },
+  methods: {
+    async onLoginClicked () {
+      var _this = this
+      this.$axios
+        .post('/auth', {
+          username: this.username,
+          password: this.password
+        })
+        .then(successResponse => {
+          if (successResponse.data.code === 200) {
+            _this.$store.commit('token', successResponse.data.result)
+            _this.$router.replace({path: '/index'})
+          } else {
+            alert('账号或密码错误')
+          }
+        })
+        .catch(failResponse => {
+          alert('未知错误')
+        })
+    },
+    async onSignUpClicked () {
+      this.$router.replace({path: '/signup'})
     }
   }
 }
@@ -39,7 +62,7 @@ export default {
 #loginCard {
   border-radius: 15px;
   background-clip: padding-box;
-  margin: 90px auto;
+  margin: 10% auto;
   width: 350px;
   padding: 35px 15px;
   text-align: center;
