@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="home">
     <nav-menu></nav-menu>
     <router-view></router-view>
   </div>
@@ -16,5 +16,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

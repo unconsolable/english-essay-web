@@ -47,6 +47,8 @@ export default {
       this.$refs.classDetail.classId = this.classList[parseInt(key)].classId
       this.$refs.classDetail.className = this.classList[parseInt(key)].className
       this.$refs.classDetail.classCode = this.classList[parseInt(key)].classCode
+      this.$refs.classDetail.changeClassData.className = this.classList[parseInt(key)].className
+      this.$refs.classDetail.changeClassData.classCode = this.classList[parseInt(key)].classCode
       this.$refs.classDetail.teacherName = this.classList[parseInt(key)].classTeacherName
     }
   }
