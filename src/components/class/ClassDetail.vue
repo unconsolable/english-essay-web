@@ -285,7 +285,6 @@ export default {
               }
             })
             .catch(e => {
-              _this.addClassDialogVisible = false
               _this.$message.error('未知错误')
             })
         })
