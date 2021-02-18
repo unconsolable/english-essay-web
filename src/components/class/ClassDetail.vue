@@ -108,6 +108,32 @@
     <div key="4" class="text item" v-if="teacherName !== ''">
       教师姓名: {{teacherName}}
     </div>
+    <!-- 班级学生名单弹窗 -->
+    <el-button type="text"
+               @click="studentListVisible = true"
+               v-if="this.$store.state.user.role === 'tea' && teacherName !== ''">
+      学生名单
+    </el-button>
+    <el-dialog title='学生名单' :visible.sync='studentListVisible' @open="initStudentList">
+      <el-table
+        :data="studentList">
+        <el-table-column
+          prop="username"
+          label="用户名">
+        </el-table-column>
+        <el-table-column
+          prop="name"
+          label="姓名">
+        </el-table-column>
+        <el-table-column
+          prop="xuehao"
+          label="学名">
+        </el-table-column>
+      </el-table>
+      <div slot="footer" class="dialog-footer">
+        <el-button type="primary" @click="studentListVisible = false">确定</el-button>
+      </div>
+    </el-dialog>
   </el-card>
 </template>
 
@@ -116,22 +142,29 @@ export default {
   name: 'classDetail',
   data () {
     return {
+      // 班级数据
       className: '',
       classId: '',
       classCode: '',
       teacherName: '',
+      // 加入班级需要的数据
       addClassDialogVisible: false,
       addClassCode: '',
+      // 创建班级需要的数据
       createClassDialogVisible: false,
       createClassData: {
         className: '',
         classCode: ''
       },
+      // 修改班级时需要的数据
       changeClassDialogVisible: false,
       changeClassData: {
         className: '',
         classCode: ''
-      }
+      },
+      // 班级学生名单
+      studentListVisible: false,
+      studentList: []
     }
   },
   methods: {
@@ -289,6 +322,32 @@ export default {
             })
         })
         .catch(_ => {})
+    },
+    initStudentList () {
+      let _this = this
+      this.$axios.get('/class/students', {
+        params: {
+          classId: this.classId
+        },
+        headers: {
+          'x-api-token': this.$store.state.token
+        }
+      })
+        .then(successResponse => {
+          if (successResponse.data.code === 200) {
+            _this.studentList = successResponse.data.result
+          } else {
+            _this.$message({
+              messgae: successResponse.data.reason,
+              type: 'error'
+            })
+            _this.studentListVisible = false
+          }
+        })
+        .catch(e => {
+          _this.$message.error('未知错误')
+          _this.studentListVisible = false
+        })
     }
   }
 }

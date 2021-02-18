@@ -101,6 +101,39 @@
     <div key="3" class="text item" v-if="taskDetail !== ''">
       所属班级: {{ className }}
     </div>
+    <!-- 完成状态表格 -->
+    <div key="4" class="text item" v-if="taskDetail !== ''">
+      完成情况
+    </div>
+    <el-table
+      :data="taskEssays">
+      <el-table-column
+        prop="name"
+        label="姓名">
+      </el-table-column>
+      <el-table-column
+        prop="isSubmited"
+        :formatter="formatBoolean"
+        label="是否提交">
+      </el-table-column>
+      <el-table-column label="操作">
+        <template slot-scope="scope">
+          <el-button
+            size="mini"
+            :disabled="!scope.row.isSubmited"
+            plain
+            @click="readAndMark(scope.$index, scope.row)">
+            查看并打分
+          </el-button>
+          <el-button
+            size="mini"
+            :disabled="!scope.row.isSubmited"
+            plain>
+            智能分析
+          </el-button>
+        </template>
+      </el-table-column>
+    </el-table>
   </el-card>
 </template>
 
@@ -239,10 +272,19 @@ export default {
           _this.$message.error('未知错误')
           _this.changeTaskDialogVisible = false
         })
+    },
+    // 对提交状态的格式化操作
+    formatBoolean: function (row, column, cellValue) {
+      var ret = '否'
+      if (cellValue) {
+        ret = '是'
+      }
+      return ret
     }
   },
   computed: {
     className: function () {
+      console.log(this.taskEssays)
       for (let curClass of this.classList) {
         if (curClass.classId === this.classId) {
           return curClass.className
