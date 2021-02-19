@@ -21,15 +21,18 @@
       所属班级: {{ className }}
     </div>
     <div key="4" class="text item">
-      作文标题:
+      得分: {{ essayMark }}
     </div>
     <div key="5" class="text item">
-      <el-input v-model="essayTitle"></el-input>
+      作文标题:
     </div>
     <div key="6" class="text item">
-      作文正文:
+      <el-input v-model="essayTitle"></el-input>
     </div>
     <div key="7" class="text item">
+      作文正文:
+    </div>
+    <div key="8" class="text item">
       <el-input type="textarea" v-model="essayBody" :autosize="{ minRows: 5 }" ></el-input>
     </div>
   </el-card>
@@ -45,6 +48,7 @@ export default {
       essayTitle: '',
       essayBody: '',
       classId: 0,
+      essayMark: '',
       isSubmited: false,
       classList: []
     }
@@ -105,6 +109,10 @@ export default {
   },
   computed: {
     className: function () {
+      // 未选择数据
+      if (this.taskTitle === '') {
+        return ''
+      }
       for (let curClass of this.classList) {
         if (curClass.classId === this.classId) {
           return curClass.className

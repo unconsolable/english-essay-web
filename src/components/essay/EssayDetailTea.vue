@@ -121,6 +121,7 @@
           <el-button
             size="mini"
             :disabled="!scope.row.isSubmited"
+            type="primary"
             plain
             @click="readAndMark(scope.$index, scope.row)">
             查看并打分
@@ -128,16 +129,19 @@
           <el-button
             size="mini"
             :disabled="!scope.row.isSubmited"
+            type="primary"
             plain>
             智能分析
           </el-button>
         </template>
       </el-table-column>
     </el-table>
+    <give-mark-tea ref="giveMarkTea"></give-mark-tea>
   </el-card>
 </template>
 
 <script>
+import GiveMarkTea from './GiveMarkTea.vue'
 export default {
   data () {
     return {
@@ -254,7 +258,6 @@ export default {
         }
       })
         .then(successResponse => {
-          _this.createTaskDialogVisible = false
           if (successResponse.data.code === 200) {
             _this.$message({
               message: '修改成功',
@@ -280,11 +283,18 @@ export default {
         ret = '是'
       }
       return ret
+    },
+    readAndMark (index, row) {
+      this.$refs.giveMarkTea.essayTitle = row.title
+      this.$refs.giveMarkTea.essayBody = row.body
+      this.$refs.giveMarkTea.essayMark = row.mark
+      this.$refs.giveMarkTea.userId = row.userId
+      this.$refs.giveMarkTea.taskId = this.taskId
+      this.$refs.giveMarkTea.giveMarkVisible = true
     }
   },
   computed: {
     className: function () {
-      console.log(this.taskEssays)
       for (let curClass of this.classList) {
         if (curClass.classId === this.classId) {
           return curClass.className
@@ -292,6 +302,9 @@ export default {
       }
       return '未知'
     }
+  },
+  components: {
+    GiveMarkTea
   }
 }
 </script>

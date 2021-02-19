@@ -67,6 +67,7 @@ export default {
                 _this.$refs.essayDetailStu.taskId = successResponse.data.result.taskId
                 _this.$refs.essayDetailStu.essayTitle = successResponse.data.result.title
                 _this.$refs.essayDetailStu.essayBody = successResponse.data.result.body
+                _this.$refs.essayDetailStu.essayMark = successResponse.data.result.mark
               } else {
                 this.$message({
                   message: successResponse.data.reason,
@@ -82,6 +83,7 @@ export default {
           this.$refs.essayDetailStu.isSubmited = false
           this.$refs.essayDetailStu.essayTitle = ''
           this.$refs.essayDetailStu.essayBody = ''
+          _this.$refs.essayDetailStu.essayMark = ''
         }
       } else if (this.$store.state.user.role === 'tea') {
         // 填充任务id, 班级id, 任务题目, 任务描述信息, 留待修改时备用
