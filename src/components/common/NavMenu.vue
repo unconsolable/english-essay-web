@@ -4,9 +4,12 @@
     router
     mode="horizontal"
     style="min-width: 1300px">
-  <el-menu-item v-for="(item,i) in navList" :key="i" :index="item.name">
-    {{ item.navItem }}
-  </el-menu-item>
+    <span style="float: left; font-size: 20px; padding-top: 15px; padding-right: 10px;font-weight: bold">
+      至善作文通
+    </span>
+    <el-menu-item v-for="(item,i) in navList" :key="i" :index="item.name">
+      {{ item.navItem }}
+    </el-menu-item>
   </el-menu>
 </template>
 

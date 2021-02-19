@@ -1,6 +1,6 @@
 <template>
   <el-form id='loginCard' label-position="left" label-width="0px">
-    <h1>英语作文</h1>
+    <h1>至善作文通</h1>
       <el-form-item>
         <el-input id="nameInput"
           placeholder="请输入用户名"
