@@ -17,7 +17,7 @@ export default {
   font-size: 26px;
 }
 .box-card {
-  margin: 10px 40 px;
+  margin: 20px;
   width: 320px;
   text-align: left;
 }
