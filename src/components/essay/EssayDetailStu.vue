@@ -7,7 +7,7 @@
           提交
         </el-button>
         <el-button style="float: right; padding: 3px 3px"
-                 type="text">
+                 type="text" @click="onCorrectDialogOpen">
           智能批改
         </el-button>
     </div>
@@ -35,10 +35,12 @@
     <div key="8" class="text item">
       <el-input type="textarea" v-model="essayBody" :autosize="{ minRows: 5 }" ></el-input>
     </div>
+    <essay-correct ref="essayCorrect"></essay-correct>
   </el-card>
 </template>
 
 <script>
+import EssayCorrect from './EssayCorrect.vue'
 export default {
   data () {
     return {
@@ -52,6 +54,9 @@ export default {
       isSubmited: false,
       classList: []
     }
+  },
+  components: {
+    EssayCorrect
   },
   created: function () {
     this.$axios
@@ -95,6 +100,31 @@ export default {
               message: '提交成功',
               type: 'success'
             })
+          } else {
+            _this.$message({
+              message: successResponse.data.reason,
+              type: 'error'
+            })
+          }
+        })
+        .catch(e => {
+          _this.$message.error('未知错误')
+        })
+    },
+    onCorrectDialogOpen () {
+      let _this = this
+      this.$axios.post('/task/ecc', {
+        title: this.essayTitle,
+        body: this.essayBody
+      }, {
+        headers: {
+          'x-api-token': this.$store.state.token
+        }
+      })
+        .then(successResponse => {
+          if (successResponse.data.code === 200) {
+            _this.$refs.essayCorrect.essayCorrectData = successResponse.data.result.Data
+            _this.$refs.essayCorrect.essayCorrectVisible = true
           } else {
             _this.$message({
               message: successResponse.data.reason,

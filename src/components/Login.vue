@@ -41,27 +41,27 @@ export default {
         })
         if (successResponse.data.code === 200) {
           _this.$store.commit('token', successResponse.data.result)
+          try {
+            let successResponse = await this.$axios.get('user/basicInfo', {
+              headers: {
+                'x-api-token': this.$store.state.token
+              }
+            })
+            if (successResponse.data.code === 200) {
+              _this.$store.commit('user', successResponse.data.result)
+            } else {
+              alert(successResponse.data.reason)
+            }
+          } catch (e) {
+            alert('请求用户信息: 未知错误')
+          }
+          _this.$router.replace({path: '/index'})
         } else {
           alert('账号或密码错误')
         }
       } catch (e) {
         alert('认证: 未知错误')
       }
-      try {
-        let successResponse = await this.$axios.get('user/basicInfo', {
-          headers: {
-            'x-api-token': this.$store.state.token
-          }
-        })
-        if (successResponse.data.code === 200) {
-          _this.$store.commit('user', successResponse.data.result)
-        } else {
-          alert(successResponse.data.reason)
-        }
-      } catch (e) {
-        alert('请求用户信息: 未知错误')
-      }
-      _this.$router.replace({path: '/index'})
     },
     async onSignUpClicked () {
       this.$router.replace({path: '/signup'})

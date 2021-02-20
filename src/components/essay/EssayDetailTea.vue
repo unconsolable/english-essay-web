@@ -130,18 +130,21 @@
             size="mini"
             :disabled="!scope.row.isSubmited"
             type="primary"
-            plain>
+            plain
+            @click="onCorrectDialogOpen(scope.$index, scope.row)">
             智能分析
           </el-button>
         </template>
       </el-table-column>
     </el-table>
     <give-mark-tea ref="giveMarkTea"></give-mark-tea>
+    <essay-correct ref="essayCorrect"></essay-correct>
   </el-card>
 </template>
 
 <script>
 import GiveMarkTea from './GiveMarkTea.vue'
+import EssayCorrect from './EssayCorrect.vue'
 export default {
   data () {
     return {
@@ -291,6 +294,33 @@ export default {
       this.$refs.giveMarkTea.userId = row.userId
       this.$refs.giveMarkTea.taskId = this.taskId
       this.$refs.giveMarkTea.giveMarkVisible = true
+    },
+    onCorrectDialogOpen (index, row) {
+      {
+        let _this = this
+        this.$axios.post('/task/ecc', {
+          title: row.title,
+          body: row.body
+        }, {
+          headers: {
+            'x-api-token': this.$store.state.token
+          }
+        })
+          .then(successResponse => {
+            if (successResponse.data.code === 200) {
+              _this.$refs.essayCorrect.essayCorrectData = successResponse.data.result.Data
+              _this.$refs.essayCorrect.essayCorrectVisible = true
+            } else {
+              _this.$message({
+                message: successResponse.data.reason,
+                type: 'error'
+              })
+            }
+          })
+          .catch(e => {
+            _this.$message.error('未知错误')
+          })
+      }
     }
   },
   computed: {
@@ -304,7 +334,8 @@ export default {
     }
   },
   components: {
-    GiveMarkTea
+    GiveMarkTea,
+    EssayCorrect
   }
 }
 </script>
