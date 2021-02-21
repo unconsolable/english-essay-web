@@ -3,36 +3,36 @@
     <div slot="header" class="clearfix">
         <span>作文详情</span>
         <el-button style="float: right; padding: 3px 3px"
-                 type="text" @click="submitEssay">
+                v-if="taskDetail !== ''" type="text" @click="submitEssay">
           提交
         </el-button>
         <el-button style="float: right; padding: 3px 3px"
-                 type="text" @click="onCorrectDialogOpen">
+                 v-if="taskDetail !== ''" type="text" @click="onCorrectDialogOpen">
           智能批改
         </el-button>
     </div>
-    <div key="1" class="text item">
+    <div key="1" class="text item" v-if="taskTitle !== ''">
       作文题目: {{ taskTitle }}
     </div>
-    <div key="2" class="text item">
+    <div key="2" class="text item" v-if="taskDetail !== ''">
       作文要求: {{ taskDetail }}
     </div>
-    <div key="3" class="text item">
+    <div key="3" class="text item" v-if="className !== ''">
       所属班级: {{ className }}
     </div>
-    <div key="4" class="text item">
+    <div key="4" class="text item" v-if="essayMark !== ''">
       得分: {{ essayMark }}
     </div>
-    <div key="5" class="text item">
+    <div key="5" class="text item" v-if="taskDetail !== ''">
       作文标题:
     </div>
-    <div key="6" class="text item">
+    <div key="6" class="text item" v-if="taskDetail !== ''">
       <el-input v-model="essayTitle"></el-input>
     </div>
-    <div key="7" class="text item">
+    <div key="7" class="text item" v-if="taskDetail !== ''">
       作文正文:
     </div>
-    <div key="8" class="text item">
+    <div key="8" class="text item" v-if="taskDetail !== ''">
       <el-input type="textarea" v-model="essayBody" :autosize="{ minRows: 5 }" ></el-input>
     </div>
     <essay-correct ref="essayCorrect"></essay-correct>

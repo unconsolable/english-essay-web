@@ -9,12 +9,12 @@
         创建新题目
       </el-button>
       <el-button style="float: right; padding: 3px 3px;"
-                 type="text"
+                 type="text" v-if="taskDetail !== ''"
                  @click="changeTaskDialogVisible = true">
         修改本题目
       </el-button>
       <el-button style="float: right; padding: 3px 3px;"
-                 type="text"
+                 type="text" v-if="taskDetail !== ''"
                  @click="deleteTask">
         <span style="color: red;">删除本题目</span>
       </el-button>
@@ -103,9 +103,9 @@
     </div>
     <!-- 完成状态表格 -->
     <div key="4" class="text item" v-if="taskDetail !== ''">
-      完成情况
+      完成情况:
     </div>
-    <el-table
+    <el-table v-if="taskDetail !== ''"
       :data="taskEssays">
       <el-table-column
         prop="name"

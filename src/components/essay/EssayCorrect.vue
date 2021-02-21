@@ -30,7 +30,7 @@
       </el-table>
     </div>
     <!-- 修改建议 -->
-    <div v-if="this.$store.state.user.role === 'stu'">
+    <div>
       <h3 style="text-align: center; font-size: 20px;">修改建议</h3>
       <el-table
         :data="essayCorrectData.SentenceComments">
