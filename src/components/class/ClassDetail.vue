@@ -369,7 +369,7 @@ export default {
   clear: both
 }
 .box-card {
-  width: 320px;
+  width: 480px;
   text-align: left;
 }
 </style>
