@@ -206,6 +206,7 @@ export default {
               type: 'success'
             })
             _this.createTaskDialogVisible = false
+            _this.$emit('essayTaskReload')
           } else {
             _this.$message({
               message: successResponse.data.reason,
@@ -236,6 +237,10 @@ export default {
                   message: '删除成功',
                   type: 'success'
                 })
+                _this.$emit('essayTaskReload')
+                _this.taskId = 0
+                _this.taskTitle = ''
+                this.taskDetail = ''
               } else {
                 _this.$message({
                   message: successResponse.data.reason,
@@ -266,6 +271,10 @@ export default {
               message: '修改成功',
               type: 'success'
             })
+            _this.$emit('essayTaskReload')
+            this.classId = this.changeTaskData.classId
+            this.taskTitle = this.changeTaskData.taskName
+            this.taskDesc = this.changeTaskData.taskDesc
             _this.changeTaskDialogVisible = false
           } else {
             _this.$message({

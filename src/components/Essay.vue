@@ -6,7 +6,7 @@
     </el-aside>
     <el-main>
       <essay-detail-stu ref="essayDetailStu" v-if="this.$store.state.user.role === 'stu'"></essay-detail-stu>
-      <essay-detail-tea ref="essayDetailTea" v-if="this.$store.state.user.role === 'tea'"></essay-detail-tea>
+      <essay-detail-tea ref="essayDetailTea" v-if="this.$store.state.user.role === 'tea'" @essayTaskReload="onEssayTaskReload"></essay-detail-tea>
     </el-main>
   </el-container>
 </template>
@@ -117,6 +117,25 @@ export default {
             this.$message.error('未知错误')
           })
       }
+    },
+    onEssayTaskReload () {
+      // 获取作文任务列表
+      this.$axios
+        .get('task/list', {
+          headers: {
+            'x-api-token': this.$store.state.token
+          }
+        })
+        .then(successResponse => {
+          if (successResponse.data.code === 200) {
+            this.essayList = successResponse.data.result
+          } else {
+            alert(successResponse.data.reason)
+          }
+        })
+        .catch(error => {
+          alert('请求作文信息失败', error)
+        })
     }
   }
 }

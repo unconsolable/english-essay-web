@@ -10,7 +10,7 @@
       <div slot="header" class="clearfix text">
         每日一句
       </div>
-      <img :src="picture" style="width: 440px; height: 263px">
+      <img :src="picture" style="width: 500px; height: 299px">
       <p class="text">{{ content }}</p>
       <p class="text">{{ note }}</p>
     </el-card>
@@ -38,6 +38,7 @@ export default {
         if (successResponse.data.code === 200) {
           this.content = successResponse.data.result.content
           this.note = successResponse.data.result.note
+          this.picture = successResponse.data.result.picture2
         }
       })
       .catch(e => {
@@ -59,7 +60,7 @@ export default {
 }
 .moto-card {
   margin: 20px;
-  width: 480px;
+  width: 540px;
   text-align: left;
   float: left;
 }

@@ -321,6 +321,10 @@ export default {
                   type: 'success'
                 })
                 _this.$emit('classReload')
+                _this.className = ''
+                _this.classId = ''
+                _this.classCode = ''
+                _this.teacherName = ''
               } else {
                 _this.$message({
                   message: successResponse.data.reason,
