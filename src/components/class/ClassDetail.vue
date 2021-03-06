@@ -109,7 +109,7 @@
       教师姓名: {{teacherName}}
     </div>
     <!-- 班级学生名单弹窗 -->
-    <el-button type="text"
+    <el-button type="text" top="9vh"
                @click="studentListVisible = true"
                v-if="this.$store.state.user.role === 'tea' && teacherName !== ''">
       学生名单
@@ -184,6 +184,7 @@ export default {
               message: '加入成功',
               type: 'success'
             })
+            _this.$emit('classReload')
           } else {
             _this.$message({
               message: successResponse.data.reason,
@@ -218,6 +219,11 @@ export default {
                   message: '退出成功',
                   type: 'success'
                 })
+                _this.$emit('classReload')
+                _this.className = ''
+                _this.classId = ''
+                _this.classCode = ''
+                _this.teacherName = ''
               } else {
                 _this.$message({
                   message: successResponse.data.reason,
@@ -250,6 +256,7 @@ export default {
               message: '创建成功',
               type: 'success'
             })
+            _this.$emit('classReload')
           } else {
             _this.$message({
               message: successResponse.data.reason,
@@ -280,6 +287,9 @@ export default {
               message: '修改成功',
               type: 'success'
             })
+            _this.$emit('classReload')
+            _this.className = this.changeClassData.className
+            _this.classCode = this.changeClassData.classCode
           } else {
             _this.$message({
               message: successResponse.data.reason,
@@ -310,6 +320,7 @@ export default {
                   message: '删除成功',
                   type: 'success'
                 })
+                _this.$emit('classReload')
               } else {
                 _this.$message({
                   message: successResponse.data.reason,

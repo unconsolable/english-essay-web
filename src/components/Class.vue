@@ -5,7 +5,7 @@
       <side-menu :classList="classList" @indexSelect="onIndexSelect"></side-menu>
     </el-aside>
     <el-main>
-      <class-detail ref="classDetail"></class-detail>
+      <class-detail ref="classDetail" @classReload="onClassReload"></class-detail>
     </el-main>
   </el-container>
 </template>
@@ -50,6 +50,24 @@ export default {
       this.$refs.classDetail.changeClassData.className = this.classList[parseInt(key)].className
       this.$refs.classDetail.changeClassData.classCode = this.classList[parseInt(key)].classCode
       this.$refs.classDetail.teacherName = this.classList[parseInt(key)].classTeacherName
+    },
+    onClassReload () {
+      this.$axios
+        .get('class/list', {
+          headers: {
+            'x-api-token': this.$store.state.token
+          }
+        })
+        .then(successResponse => {
+          if (successResponse.data.code === 200) {
+            this.classList = successResponse.data.result
+          } else {
+            alert(successResponse.data.reason)
+          }
+        })
+        .catch(error => {
+          alert('请求班级信息失败', error)
+        })
     }
   }
 }
