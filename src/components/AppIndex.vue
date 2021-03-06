@@ -23,8 +23,8 @@ import defaultImage from '../../static/default_daily.jpg'
 export default {
   data () {
     return {
-      content: '',
-      note: '',
+      content: 'There is no pressure when you are making a dream come true.',
+      note: '当你是在为梦想成真努力时，就不会有压力。',
       picture: defaultImage
     }
   },
@@ -38,12 +38,9 @@ export default {
         if (successResponse.data.code === 200) {
           this.content = successResponse.data.result.content
           this.note = successResponse.data.result.note
-          console.log(this.picture)
-        } else {
-          this.content = 'There is no pressure when you are making a dream come true.'
-          this.note = '当你是在为梦想成真努力时，就不会有压力。'
-          console.log(this.picture)
         }
+      })
+      .catch(e => {
       })
   }
 }
@@ -52,6 +49,7 @@ export default {
 <style scoped>
 .title {
   font-size: 26px;
+  color: rgb(85,85,85);
 }
 .box-card {
   margin: 20px;

@@ -1,6 +1,7 @@
 <template>
   <el-dialog title='智能批改'
   :visible.sync='essayCorrectVisible'
+  top="5vh"
   >
     <!-- 总评 -->
     <div>

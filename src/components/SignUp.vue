@@ -1,6 +1,6 @@
 <template>
   <el-form id='signUpCard' label-position="left" label-width="0px">
-    <h1>注册</h1>
+    <h1 style="color: rgb(85,85,85);">注册</h1>
       <el-form-item>
         <el-input id="userNameInput"
           placeholder="用户名"

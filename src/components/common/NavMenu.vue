@@ -4,11 +4,20 @@
     router
     mode="horizontal"
     style="min-width: 1300px">
-    <span style="float: left; font-size: 20px; padding-top: 15px; padding-right: 10px;font-weight: bold">
+    <p class="el-icon-edit" style="color: rgb(85,85,85); float: left; font-size: 24px; margin: 18px 10px; font-weight: bold">
       至善作文通
-    </span>
-    <el-menu-item v-for="(item,i) in navList" :key="i" :index="item.name">
+    </p>
+    <!-- <el-menu-item v-for="(item,i) in navList" :key="i" :index="item.name">
       {{ item.navItem }}
+    </el-menu-item> -->
+    <el-menu-item class="el-icon-menu" key="0" :index="navList[0].name" style="font-size: 16px;">
+      {{ navList[0].navItem }}
+    </el-menu-item>
+    <el-menu-item class="el-icon-edit-outline"  key="1" :index="navList[1].name" style="font-size: 16px;">
+      {{ navList[1].navItem }}
+    </el-menu-item>
+    <el-menu-item class="el-icon-tickets" key="2" :index="navList[2].name" style="font-size: 16px;">
+      {{ navList[2].navItem }}
     </el-menu-item>
   </el-menu>
 </template>

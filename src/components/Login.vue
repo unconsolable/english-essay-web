@@ -1,6 +1,6 @@
 <template>
   <el-form id='loginCard' label-position="left" label-width="0px">
-    <h1>至善作文通</h1>
+    <h1 class="title">至善作文通</h1>
       <el-form-item>
         <el-input id="nameInput"
           placeholder="请输入用户名"
@@ -80,6 +80,9 @@ export default {
   text-align: center;
   border: 1px solid #eaeaea;
   box-shadow: 0 0 25px #cac6c6;
+}
+.title {
+  color: rgb(85,85,85)
 }
 
 </style>
