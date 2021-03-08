@@ -19,6 +19,9 @@
     <el-menu-item class="el-icon-tickets" key="2" :index="navList[2].name" style="font-size: 16px;">
       {{ navList[2].navItem }}
     </el-menu-item>
+    <el-menu-item class="el-icon-reading" key="3" :index="navList[3].name" style="font-size: 16px;" v-if="this.$store.state.user.role === 'stu'">
+      {{ navList[3].navItem }}
+    </el-menu-item>
   </el-menu>
 </template>
 
@@ -30,7 +33,8 @@ export default {
       navList: [
         {name: '/index', navItem: '首页'},
         {name: '/essay', navItem: '作文'},
-        {name: '/class', navItem: '班级'}
+        {name: '/class', navItem: '班级'},
+        {name: '/selfstudy', navItem: '自主练习'}
       ]
     }
   }
