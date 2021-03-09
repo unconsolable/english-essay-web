@@ -1,7 +1,8 @@
 <template>
   <el-dialog title='查看并批改'
   :visible.sync='giveMarkVisible'
-  width=45%>
+  width=45%
+  top="5vh">
   <p>
     作文标题:
   </p>

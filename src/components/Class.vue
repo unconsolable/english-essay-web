@@ -1,10 +1,10 @@
 <template>
-  <el-container>
-    <el-aside style="width: 200px;margin-top: 20px">
+  <el-container style="position: relative; float: left; left: 50%;">
+    <el-aside style="width: 240px; margin-top: 20px; position: relative; float: left; left: -50%;">
       <switch></switch>
       <side-menu :classList="classList" @indexSelect="onIndexSelect"></side-menu>
     </el-aside>
-    <el-main>
+    <el-main style="position: relative; float: left; left: -50%;">
       <class-detail ref="classDetail" @classReload="onClassReload"></class-detail>
     </el-main>
   </el-container>

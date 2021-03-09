@@ -7,6 +7,7 @@ import Home from '@/components/Home.vue'
 import Essay from '@/components/Essay.vue'
 import Class from '@/components/Class.vue'
 import SelfStudy from '@/components/SelfStudy.vue'
+import SelfLearn from '@/components/SelfLearn.vue'
 
 Vue.use(Router)
 
@@ -60,6 +61,14 @@ const router = new Router({
           path: '/selfstudy',
           name: 'SelfStudy',
           component: SelfStudy,
+          meta: {
+            requireAuth: true
+          }
+        },
+        {
+          path: '/selflearn',
+          name: 'SelfLearn',
+          component: SelfLearn,
           meta: {
             requireAuth: true
           }

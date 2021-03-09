@@ -1,28 +1,30 @@
 <template>
-  <el-main>
-    <el-card class="box-card">
-      <div slot="header" class="clearfix">
-          <span>自主练习</span>
-          <el-button style="float: right; padding: 3px 3px"
-                  type="text" @click="onCorrectDialogOpen">
-            智能批改
-          </el-button>
-      </div>
-      <div key="1" class="text item">
-        作文标题:
-      </div>
-      <div key="2" class="text item">
-        <el-input v-model="essayTitle"></el-input>
-      </div>
-      <div key="3" class="text item">
-        作文正文:
-      </div>
-      <div key="4" class="text item">
-        <el-input type="textarea" v-model="essayBody" :autosize="{ minRows: 5 }" ></el-input>
-      </div>
-      <essay-correct ref="essayCorrect"></essay-correct>
-    </el-card>
-  </el-main>
+  <el-container style="position: relative; float: left; left: 50%;">
+    <el-main style="position: relative; float: left; left: -50%;">
+      <el-card class="box-card">
+        <div slot="header" class="clearfix">
+            <span>自主练习</span>
+            <el-button style="float: right; padding: 3px 3px"
+                    type="text" @click="onCorrectDialogOpen">
+              智能批改
+            </el-button>
+        </div>
+        <div key="1" class="text item">
+          作文标题:
+        </div>
+        <div key="2" class="text item">
+          <el-input v-model="essayTitle"></el-input>
+        </div>
+        <div key="3" class="text item">
+          作文正文:
+        </div>
+        <div key="4" class="text item">
+          <el-input type="textarea" v-model="essayBody" :autosize="{ minRows: 5 }" ></el-input>
+        </div>
+        <essay-correct ref="essayCorrect"></essay-correct>
+      </el-card>
+    </el-main>
+  </el-container>
 </template>
 
 <script>

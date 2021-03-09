@@ -1,12 +1,12 @@
 <template>
-  <div id="root">
-    <el-card class="box-card">
+  <div id="root" style="position: relative; float: left; left: 50%;">
+    <el-card class="box-card" style="position: relative; float: left; left: -50%;">
       <h1 class="title">你好，{{ this.$store.state.user.name }} !</h1>
       <p v-if="this.$store.state.user.role === 'stu'" class="text">黑发不知勤学早，白首方悔读书迟。</p>
       <p class="text">点击"作文"查看任务信息</p>
       <p class="text">点击"班级"查看班级信息</p>
     </el-card>
-    <el-card class="moto-card">
+    <el-card class="moto-card" style="position: relative; float: left; left: -50%;">
       <div slot="header" class="clearfix text">
         每日一句
       </div>
