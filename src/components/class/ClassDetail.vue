@@ -384,7 +384,7 @@ export default {
   clear: both
 }
 .box-card {
-  width: 480px;
+  width: 560px;
   text-align: left;
 }
 </style>
