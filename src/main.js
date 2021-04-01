@@ -10,7 +10,7 @@ import store from '@/store'
 var axios = require('axios')
 // need to be change
 axios.defaults.baseURL = 'http://localhost:3000/'
-axios.defaults.timeout = 3000
+axios.defaults.timeout = 6000
 Vue.prototype.$axios = axios
 
 Vue.use(ElementUI)
