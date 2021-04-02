@@ -28,5 +28,8 @@ export default {
 <style scoped>
 .categories {
   text-align: center;
+  border-radius: 4px;
+  border: 0.6px solid #ffffff;
+  box-shadow: 0 1px 10px rgb(18 18 18 / 10%);
 }
 </style>

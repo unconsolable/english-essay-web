@@ -1,59 +1,61 @@
 <template>
-  <el-form id='signUpCard' label-position="left" label-width="0px">
-    <h1 style="color: rgb(85,85,85);">注册</h1>
-      <el-form-item>
-        <el-input id="userNameInput"
-          placeholder="用户名"
-          v-model="username"
-          name="name">
-        </el-input>
-      </el-form-item>
-      <el-form-item>
-        <el-input id="pwInput"
-          placeholder="密码"
-          v-model="password"
-          name="pw"
-          show-password>
-        </el-input>
-      </el-form-item>
-      <el-form-item>
-        <el-select v-model="role" placeholder="身份选择" size="medium">
-          <el-option
-           v-for="role in roleOption"
-           :key="role.value"
-           :label="role.label"
-           :value="role.value">
-          </el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item>
-        <el-input id="nameInput"
-          placeholder="真实姓名"
-          v-model="name"
-          name="name"
-        >
-        </el-input>
-      </el-form-item>
-      <el-form-item>
-        <el-input v-if="role == 'stu'"
-          id="xhInput"
-          placeholder="学号"
-          v-model="xuehao"
-          name="xuehao"
-        >
-        </el-input>
-        <el-input v-else
-          id="xhInput"
-          placeholder="一卡通号"
-          v-model="xuehao"
-          name="xuehao"
-        >
-        </el-input>
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="onSignUpClicked" plain>确认注册</el-button>
-      </el-form-item>
-  </el-form>
+  <body id="backgnd">
+    <el-form id='signUpCard' label-position="left" label-width="0px">
+      <h1 style="color: rgb(85,85,85);">注册</h1>
+        <el-form-item>
+          <el-input id="userNameInput"
+            placeholder="用户名"
+            v-model="username"
+            name="name">
+          </el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-input id="pwInput"
+            placeholder="密码"
+            v-model="password"
+            name="pw"
+            show-password>
+          </el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-select v-model="role" placeholder="身份选择" size="medium">
+            <el-option
+             v-for="role in roleOption"
+             :key="role.value"
+             :label="role.label"
+             :value="role.value">
+            </el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item>
+          <el-input id="nameInput"
+            placeholder="真实姓名"
+            v-model="name"
+            name="name"
+          >
+          </el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-input v-if="role == 'stu'"
+            id="xhInput"
+            placeholder="学号"
+            v-model="xuehao"
+            name="xuehao"
+          >
+          </el-input>
+          <el-input v-else
+            id="xhInput"
+            placeholder="一卡通号"
+            v-model="xuehao"
+            name="xuehao"
+          >
+          </el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="onSignUpClicked" plain>确认注册</el-button>
+        </el-form-item>
+    </el-form>
+  </body>
 </template>
 
 <script>
@@ -115,6 +117,15 @@ export default {
   text-align: center;
   border: 1px solid #eaeaea;
   box-shadow: 0 0 25px #cac6c6;
+  background: rgba(255, 255, 255, 0.98);
+}
+#backgnd {
+  background-image: url("../../static/login-background.jpg");
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  background-size: cover;
+  background-position: center;
 }
 
 </style>

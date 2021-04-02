@@ -3,7 +3,7 @@
     :default-active="'/index'"
     router
     mode="horizontal"
-    style="min-width: 1300px">
+    style="margin: 0.3rem auto; min-width: 100%; border-radius: 8px; background-clip: padding-box; border: 1px solid #eaeaea; box-shadow: 0 1px 10px rgb(18 18 18 / 10%);">
     <p class="el-icon-edit" style="color: rgb(85,85,85); float: left; font-size: 24px; margin: 18px 10px; font-weight: bold">
       至善作文通
     </p>
