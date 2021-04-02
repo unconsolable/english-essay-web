@@ -1,26 +1,28 @@
 <template>
-  <el-form id='loginCard' label-position="left" label-width="0px">
-    <h1 class="title">至善作文通</h1>
-      <el-form-item>
-        <el-input id="nameInput"
-          placeholder="请输入用户名"
-          v-model="username"
-          name="name">
-        </el-input>
-      </el-form-item>
-      <el-form-item>
-        <el-input id="pwInput"
-          placeholder="请输入密码"
-          v-model="password"
-          name="pw"
-          show-password>
-        </el-input>
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="onLoginClicked" plain>登录</el-button>
-        <el-button type="primary" @click="onSignUpClicked" plain>注册</el-button>
-      </el-form-item>
-  </el-form>
+  <body id="backgnd">
+    <el-form id='loginCard' label-position="left" label-width="0px">
+      <h1 class="title">至善作文通</h1>
+        <el-form-item>
+          <el-input id="nameInput"
+            placeholder="请输入用户名"
+            v-model="username"
+            name="name">
+          </el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-input id="pwInput"
+            placeholder="请输入密码"
+            v-model="password"
+            name="pw"
+            show-password>
+          </el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="onLoginClicked" plain>登录</el-button>
+          <el-button type="primary" @click="onSignUpClicked" plain>注册</el-button>
+        </el-form-item>
+    </el-form>
+  </body>
 </template>
 
 <script>
@@ -80,9 +82,18 @@ export default {
   text-align: center;
   border: 1px solid #eaeaea;
   box-shadow: 0 0 25px #cac6c6;
+  background: rgba(255, 255, 255, 0.98);
 }
 .title {
   color: rgb(85,85,85)
+}
+#backgnd {
+  background-image: url("../../static/login-background.jpg");
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  background-size: cover;
+  background-position: center;
 }
 
 </style>

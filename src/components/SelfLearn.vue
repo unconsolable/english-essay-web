@@ -48,6 +48,7 @@ export default {
   methods: {
     onIndexSelect (key) {
       this.$refs.videoDetail.videos = this.videoList[parseInt(key)].res
+      this.$refs.videoDetail.cover1 = this.videoList[parseInt(key)].cover
     }
   }
 }

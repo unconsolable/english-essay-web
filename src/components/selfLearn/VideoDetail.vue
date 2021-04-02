@@ -22,14 +22,13 @@
 </template>
 
 <script>
-import cover1 from '../../../static/video-cover1.jpg'
 import VideoIframe from './VideoIframe.vue'
 
 export default {
   data () {
     return {
       videos: [],
-      cover1: cover1,
+      cover1: '',
       videoDialogVisible: false,
       url: ''
     }

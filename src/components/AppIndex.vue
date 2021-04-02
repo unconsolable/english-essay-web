@@ -1,5 +1,5 @@
 <template>
-  <div id="root" style="position: relative; float: left; left: 50%;">
+  <div id="root" style="position: relative; float: left; left: 50%; ">
     <el-card class="box-card" style="position: relative; float: left; left: -50%;">
       <h1 class="title">你好，{{ this.$store.state.user.name }} !</h1>
       <p v-if="this.$store.state.user.role === 'stu'" class="text">黑发不知勤学早，白首方悔读书迟。</p>
